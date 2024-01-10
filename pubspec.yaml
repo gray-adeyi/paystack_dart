@@ -1,13 +1,14 @@
 name: paystack
 description: A starting point for Dart libraries or applications.
-version: 1.0.0
-# repository: https://github.com/my_org/my_repo
+version: 0.0.1
+repository: https://github.com/gray-adeyi/paystack_dart
 
 environment:
   sdk: ^3.2.3
 
 # Add regular dependencies here.
 dependencies:
+  http: ^1.1.2
   # path: ^1.8.0
 
 dev_dependencies:

@@ -9,7 +9,7 @@ import './enums.dart';
 import './exceptions.dart';
 
 typedef NativeJsonData = Map<String, dynamic>;
-typedef Response = Future<({int statusCode, NativeJsonData data})>;
+typedef Response = ({int statusCode, NativeJsonData data});
 
 const String packageVersion = "0.0.1";
 
@@ -17,6 +17,7 @@ class BaseClient {
   late String _secretKey;
   String secretKeyEnvironmentalVariableName = "PAYSTACK_SECRET_KEY";
   http.Client client = http.Client();
+  final String dataAsListKey = 'value';
 
   BaseClient({String? secretKey}) {
     if (secretKey != null) {
@@ -43,9 +44,15 @@ class BaseClient {
       };
 
   // TODO: Provide concrete type for data
-  Response call(Uri url, HttpMethod method, {NativeJsonData? data}) async {
+  Future<Response> call(Uri url, HttpMethod method,
+      {NativeJsonData? data, bool dataAsList = false}) async {
     http.Response response;
-    var jsonEncodedData = jsonEncode(data);
+    String jsonEncodedData;
+    if (dataAsList) {
+      jsonEncodedData = jsonEncode(data?[dataAsListKey]);
+    } else {
+      jsonEncodedData = jsonEncode(data);
+    }
     // TODO: Find out how to do parameter destructuring into a function to replace
     // the switch statement below.
     switch (method) {
@@ -81,8 +88,7 @@ class BaseClient {
     return normalizedQueryParameter;
   }
 
-  ({int statusCode, NativeJsonData data}) _parseResponse(
-      http.Response response) {
+  Response _parseResponse(http.Response response) {
     var data = jsonDecode(utf8.decode(response.bodyBytes)) as NativeJsonData;
     return (statusCode: response.statusCode, data: data);
   }

@@ -1,26 +1,13 @@
 import 'package:paystack/src/enums.dart';
 
 import '../base_client.dart';
-
-class TerminalData {
-  final String id;
-  final String reference;
-
-  TerminalData(this.id, this.reference);
-
-  Map<String, String> toMap() {
-    return {
-      "id": id,
-      "reference": reference,
-    };
-  }
-}
+import '../models.dart';
 
 class TerminalClient extends BaseClient {
   TerminalClient({super.secretKey});
 
-  Response sendEvent(String terminalId, TerminalEvent type,
-      TerminalAction action, TerminalData data) {
+  Future<Response> sendEvent(String terminalId, TerminalEvent type,
+      TerminalAction action, TerminalData data) async {
     var supportedInvoiceEventActions = [
       TerminalAction.process,
       TerminalAction.view
@@ -40,48 +27,52 @@ class TerminalClient extends BaseClient {
       "action": action.name,
       "data": data.toMap()
     };
-    return call(
+    return await call(
         Uri.https(baseUrl, '/terminal/$terminalId/event'), HttpMethod.post,
         data: payloadData);
   }
 
-  Response eventStatus(String terminalId, String eventId) {
-    return call(Uri.https(baseUrl, '/terminal/$terminalId/event/$eventId'),
+  Future<Response> eventStatus(String terminalId, String eventId) async {
+    return await call(
+        Uri.https(baseUrl, '/terminal/$terminalId/event/$eventId'),
         HttpMethod.get);
   }
 
-  Response terminalStatus(String terminalId) {
-    return call(
+  Future<Response> terminalStatus(String terminalId) async {
+    return await call(
         Uri.https(baseUrl, '/terminal/$terminalId/presence'), HttpMethod.get);
   }
 
-  Response all({int perPage = 50, int? next, int? previous}) {
+  Future<Response> all({int perPage = 50, int? next, int? previous}) async {
     var queryParameters = normalizeQueryParameters(
         {'perPage': perPage, 'next': int, 'previous': previous});
-    return call(
+    return await call(
         Uri.https(baseUrl, '/terminal', queryParameters), HttpMethod.get);
   }
 
-  Response fetchOne(String terminalId) {
-    return call(Uri.https(baseUrl, '/terminal/$terminalId'), HttpMethod.get);
+  Future<Response> fetchOne(String terminalId) async {
+    return await call(
+        Uri.https(baseUrl, '/terminal/$terminalId'), HttpMethod.get);
   }
 
-  Response update(String terminalId, {String? name, String? address}) {
+  Future<Response> update(String terminalId,
+      {String? name, String? address}) async {
     var data = {'name': name, 'address': address};
-    return call(Uri.https(baseUrl, '/terminal/$terminalId'), HttpMethod.put,
+    return await call(
+        Uri.https(baseUrl, '/terminal/$terminalId'), HttpMethod.put,
         data: data);
   }
 
-  Response commission(String serialNumber) {
+  Future<Response> commission(String serialNumber) async {
     var data = {"serial_number": serialNumber};
-    return call(
+    return await call(
         Uri.https(baseUrl, '/terminal/commission_device'), HttpMethod.post,
         data: data);
   }
 
-  Response decommission(String serialNumber) {
+  Future<Response> decommission(String serialNumber) async {
     var data = {"serial_number": serialNumber};
-    return call(
+    return await call(
         Uri.https(baseUrl, '/terminal/decommission_device'), HttpMethod.post,
         data: data);
   }

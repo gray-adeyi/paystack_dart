@@ -36,14 +36,14 @@ class TransactionClient extends BaseClient {
   ///   specified goes to the main account regardless of the
   ///   split configuration.
   ///   [bearer] specifies who bears Paystack charges.
-  Response initialize(int amount, String email,
+  Future<Response> initialize(int amount, String email,
       {Currency currency = Currency.ngn,
       String? reference,
       String? callbackUrl,
       String? plan,
       int? invoiceLimit,
       Map<String, dynamic>? metadata,
-      List<Channel>? channels,
+      List<PaymentChannel>? channels,
       String? splitCode,
       String? subaccount,
       int? transactionCharge,
@@ -76,7 +76,7 @@ class TransactionClient extends BaseClient {
   /// If you plan to store or make use of the the transaction ID, you should
   /// represent it as a unsigned 64-bit integer. To learn more,
   /// [check out paystack's changelog](https://paystack.com/docs/changelog/api/#june-2022).
-  Response verify(String reference) async {
+  Future<Response> verify(String reference) async {
     return await call(
         Uri.https(baseUrl, "/transaction/verify/$reference"), HttpMethod.get);
   }
@@ -103,7 +103,7 @@ class TransactionClient extends BaseClient {
   /// If you plan to store or make use of the the transaction ID, you should
   /// represent it as a unsigned 64-bit integer. To learn more,
   /// [check out paystack's changelog](https://paystack.com/docs/changelog/api/#june-2022).
-  Response all({
+  Future<Response> all({
     int perPage = 50,
     int page = 1,
     String? customer,
@@ -127,15 +127,15 @@ class TransactionClient extends BaseClient {
         Uri.https(baseUrl, "/transaction", queryParameters), HttpMethod.get);
   }
 
-  Response fetchOne(String id) async {
+  Future<Response> fetchOne(String id) async {
     return await call(Uri.https(baseUrl, '/transaction/$id'), HttpMethod.get);
   }
 
-  Response charge(int amount, String email, String authorizationCode,
+  Future<Response> charge(int amount, String email, String authorizationCode,
       {String? reference,
       Currency? currency,
       Map<String, dynamic>? metadata,
-      List<Channel>? channels,
+      List<PaymentChannel>? channels,
       String? subaccount,
       String? transactionCharge,
       ChargeBearer? bearer,
@@ -144,13 +144,13 @@ class TransactionClient extends BaseClient {
         HttpMethod.post);
   }
 
-  Response timeline(String idOrReference) async {
+  Future<Response> timeline(String idOrReference) async {
     return await call(
         Uri.https(baseUrl, "/transaction/timeline/$idOrReference"),
         HttpMethod.get);
   }
 
-  Response totals({
+  Future<Response> totals({
     int perPage = 50,
     int page = 1,
     String? from,
@@ -160,7 +160,7 @@ class TransactionClient extends BaseClient {
         Uri.https(baseUrl, "/transaction/totals"), HttpMethod.get);
   }
 
-  Response export(
+  Future<Response> export(
       {int perPage = 50,
       int page = 1,
       String? from,
@@ -176,7 +176,7 @@ class TransactionClient extends BaseClient {
         Uri.https(baseUrl, "/transaction/export"), HttpMethod.get);
   }
 
-  Response partialDebit(
+  Future<Response> partialDebit(
       String authorizationCode, Currency currency, int amount, String email,
       {String? reference, int? atLeast}) async {
     return await call(Uri.https(baseUrl), HttpMethod.post);

@@ -3,6 +3,6 @@
 /// More dartdocs go here.
 library;
 
-export 'src/paystack_base.dart';
+export 'src/base_client.dart';
 
 // TODO: Export any libraries intended for clients of this package.

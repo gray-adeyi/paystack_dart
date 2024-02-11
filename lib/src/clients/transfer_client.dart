@@ -3,6 +3,8 @@ import '../enums.dart';
 import '../models.dart';
 
 class TransferClient extends BaseClient {
+  TransferClient({super.secretKey});
+
   Future<Response> initiate(int amount, String recipient,
       {String source = 'balance',
       String? reason,

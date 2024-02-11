@@ -2,6 +2,8 @@ import '../base_client.dart';
 import '../enums.dart';
 
 class DedicatedVirtualAccountClient extends BaseClient {
+  DedicatedVirtualAccountClient({super.secretKey});
+
   Future<Response> create(
     String customer, {
     String? preferredBank,

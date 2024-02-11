@@ -16,3 +16,7 @@ class MissingSecretKeyException extends BaseException {
 class UnsupportedHttpMethodException extends BaseException {
   UnsupportedHttpMethodException(super.message);
 }
+
+class ApiException extends BaseException {
+  ApiException(super.message);
+}

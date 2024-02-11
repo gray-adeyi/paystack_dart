@@ -2,6 +2,8 @@ import '../base_client.dart';
 import '../enums.dart';
 
 class PlanClient extends BaseClient {
+  PlanClient({super.secretKey});
+
   Future<Response> create(String name, int amount, Interval interval,
       {String? description,
       bool? sendInvoices,

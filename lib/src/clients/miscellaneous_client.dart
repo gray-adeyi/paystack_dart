@@ -2,6 +2,8 @@ import '../base_client.dart';
 import '../enums.dart';
 
 class MiscellaneousClient extends BaseClient {
+  MiscellaneousClient({super.secretKey});
+
   Future<Response> banks(Country country, bool useCursor,
       {int perPage = 50,
       bool? payWithBankTransfer,

@@ -3,6 +3,8 @@ import 'package:paystack/src/enums.dart';
 import '../base_client.dart';
 
 class SubscriptionClient extends BaseClient {
+  SubscriptionClient({super.secretKey});
+
   Future<Response> create(String customer, String plan, String authorization,
       {String? startDate}) async {
     var data = {
@@ -19,7 +21,8 @@ class SubscriptionClient extends BaseClient {
       {int perPage = 50, int page = 1, String? customer, String? plan}) async {
     var queryParameters = normalizeQueryParameters(
         {'perPage': perPage, 'page': page, 'customer': customer, 'plan': plan});
-    return await call(Uri.https(baseUrl, '/subscription'), HttpMethod.get);
+    return await call(
+        Uri.https(baseUrl, '/subscription', queryParameters), HttpMethod.get);
   }
 
   Future<Response> fetchOne(String idOrCode) async {

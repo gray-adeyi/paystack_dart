@@ -2,6 +2,8 @@ import '../base_client.dart';
 import '../enums.dart';
 
 class DisputeClient extends BaseClient {
+  DisputeClient({super.secretKey});
+
   Future<Response> all(
     String from,
     String to, {

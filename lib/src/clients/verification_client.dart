@@ -2,6 +2,8 @@ import '../base_client.dart';
 import '../enums.dart';
 
 class VerificationClient extends BaseClient {
+  VerificationClient({super.secretKey});
+
   Future<Response> resolveAccount(
     String accountNumber,
     String bankCode,

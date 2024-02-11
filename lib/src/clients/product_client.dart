@@ -2,6 +2,8 @@ import '../base_client.dart';
 import '../enums.dart';
 
 class ProductClient extends BaseClient {
+  ProductClient({super.secretKey});
+
   Future<Response> create(
       String name, String description, int price, Currency currency,
       {bool? unlimited, int? quantity}) async {

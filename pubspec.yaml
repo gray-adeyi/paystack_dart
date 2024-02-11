@@ -1,5 +1,5 @@
 name: paystack
-description: A starting point for Dart libraries or applications.
+description: A backend client library for Paystack inspired by Pypaystack2 from Python's ecosystem.
 version: 0.0.1
 repository: https://github.com/gray-adeyi/paystack_dart
 

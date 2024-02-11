@@ -3,6 +3,8 @@ import '../enums.dart';
 import '../models.dart';
 
 class TransferRecipientClient extends BaseClient {
+  TransferRecipientClient({super.secretKey});
+
   Future<Response> create(
     FinancialChannel type,
     String name, {

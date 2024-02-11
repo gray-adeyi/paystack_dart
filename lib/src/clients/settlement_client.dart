@@ -2,6 +2,8 @@ import '../base_client.dart';
 import '../enums.dart';
 
 class SettlementClient extends BaseClient {
+  SettlementClient({super.secretKey});
+
   Future<Response> all(
       {int perPage = 50,
       int page = 50,

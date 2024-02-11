@@ -13,29 +13,76 @@ and the Flutter guide for
 
 # Paystack
 
-A backend client library for paystack in dart.
+A backend client library for [Paystack](https://paystack.com/) in dart inspired
+by [Pypaystack2](https://pypi.org/project/pypaystack2/)
+from python's
+ecosystem.
 
 ## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+This library implements a wrapper on all endpoints provided by `Paystack`. The `PaystackClient`
+class has bindings on it that can be used to access the different wrapper methods. The wrapper
+methods are grouped to match [Paystack's API Reference](https://paystack.com/docs/api/). e.g.
+`PaystackClient.transactions` binding provides wrapper methods for all the endpoint for
+Paystack's Transactions API. i.e. `PaystackClient.transactions.initialize` is a wrapper method
+for [Paystack's initialize transaction endpoint](https://paystack.com/docs/api/transaction/#initialize).
+
+### Bindings on the `PaystackClient` class
+
+| Bindings                                  |
+|-------------------------------------------|
+| `PaystackClient.applePay`                 |
+| `PaystackClient.bulkCharges`              |
+| `PaystackClient.charges`                  |
+| `PaystackClient.customers`                |
+| `PaystackClient.dedicatedVirtualAccounts` |
+| `PaystackClient.disputes`                 |
+| `PaystackClient.integration`              |
+| `PaystackClient.miscellaneous`            |
+| `PaystackClient.paymentPages`             |
+| `PaystackClient.paymentRequests`          |
+| `PaystackClient.plans`                    |
+| `PaystackClient.products`                 |
+| `PaystackClient.refunds`                  |
+| `PaystackClient.settlements`              |
+| `PaystackClient.subaccounts`              |
+| `PaystackClient.subscriptions`            |
+| `PaystackClient.terminals`                |
+| `PaystackClient.transactions`             |
+| `PaystackClient.transactionSplits`        |
+| `PaystackClient.transfers`                |
+| `PaystackClient.transferControl`          |
+| `PaystackClient.transferRecipient`        |
+| `PaystackClient.verification`             |
 
 ## Getting started
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+Add the library to your client package.
+
+```bash
+dart pub add paystack
+```
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
+See `/example` folder for more examples.
 
 ```dart
+import 'package:paystack/paystack.dart';
 
-const like = 'sample';
+void main() async {
+  const client = PaystackClient(secretKey: "<your paystack secret key>");
+  const response = await
+  client.applePay.all(false);
+  print(response.statusCode);
+  print(response.data
+  );
+}
 ```
 
 ## Additional information
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+Subsequent releases will provide more test coverage and documentation. This project is still
+actively
+in development. If you have any questions, found a bug or have feature suggestions, please create
+an issue in the project's repository. Enjoy you coding! 😎

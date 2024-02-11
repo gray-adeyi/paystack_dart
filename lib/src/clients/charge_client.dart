@@ -2,6 +2,8 @@ import '../base_client.dart';
 import '../enums.dart';
 
 class ChargeClient extends BaseClient {
+  ChargeClient({super.secretKey});
+
   Future<Response> create(
     String email,
     int amount, {

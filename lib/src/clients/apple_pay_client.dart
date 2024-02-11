@@ -2,6 +2,8 @@ import '../base_client.dart';
 import '../enums.dart';
 
 class ApplePayClient extends BaseClient {
+  ApplePayClient({super.secretKey});
+
   Future<Response> register(String domainName) async {
     return await call(Uri.https(baseUrl, '/apple-pay/domain'), HttpMethod.post,
         data: {'domainName': domainName});

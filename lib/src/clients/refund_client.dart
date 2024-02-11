@@ -2,6 +2,8 @@ import '../base_client.dart';
 import '../enums.dart';
 
 class RefundClient extends BaseClient {
+  RefundClient({super.secretKey});
+
   Future<Response> create(
     String transaction, {
     int? amount,

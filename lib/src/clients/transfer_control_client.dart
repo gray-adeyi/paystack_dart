@@ -2,6 +2,8 @@ import '../base_client.dart';
 import '../enums.dart';
 
 class TransferControlClient extends BaseClient {
+  TransferControlClient({super.secretKey});
+
   Future<Response> balance() async {
     return await call(Uri.https(baseUrl, '/balance'), HttpMethod.get);
   }

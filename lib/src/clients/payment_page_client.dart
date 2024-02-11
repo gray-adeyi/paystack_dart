@@ -3,6 +3,8 @@ import 'package:paystack/src/enums.dart';
 import '../base_client.dart';
 
 class PaymentPageClient extends BaseClient {
+  PaymentPageClient({super.secretKey});
+
   Future<Response> create(String name,
       {String? description,
       int? amount,

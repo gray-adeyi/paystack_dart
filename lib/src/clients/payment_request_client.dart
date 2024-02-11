@@ -2,7 +2,9 @@ import '../base_client.dart';
 import '../enums.dart';
 import '../models.dart';
 
-class PaymentRequest extends BaseClient {
+class PaymentRequestClient extends BaseClient {
+  PaymentRequestClient({super.secretKey});
+
   Future<Response> create(String customer, int amount,
       {String? dueDate,
       String? description,
@@ -109,7 +111,8 @@ class PaymentRequest extends BaseClient {
       'split_code': splitCode
     };
     return await call(
-        Uri.https(baseUrl, '/paymentrequest/$idOrCode'), HttpMethod.put);
+        Uri.https(baseUrl, '/paymentrequest/$idOrCode'), HttpMethod.put,
+        data: data);
   }
 
   Future<Response> archive(String code) async {

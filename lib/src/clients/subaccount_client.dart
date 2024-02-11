@@ -3,6 +3,8 @@ import 'package:paystack/src/enums.dart';
 import '../base_client.dart';
 
 class SubaccountClient extends BaseClient {
+  SubaccountClient({super.secretKey});
+
   Future<Response> create(String businessName, String settlementBank,
       String accountNumber, double percentageCharge, String description,
       {String? primaryContactEmail,
@@ -32,7 +34,8 @@ class SubaccountClient extends BaseClient {
       'from': from,
       'to': to,
     });
-    return await call(Uri.https(baseUrl, '/subaccount'), HttpMethod.get);
+    return await call(
+        Uri.https(baseUrl, '/subaccount', queryParameters), HttpMethod.get);
   }
 
   Future<Response> fetchOne(String idOrCode) async {

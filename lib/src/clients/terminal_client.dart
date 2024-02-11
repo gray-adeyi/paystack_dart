@@ -1,4 +1,5 @@
 import 'package:paystack/src/enums.dart';
+import 'package:paystack/src/exceptions.dart';
 
 import '../base_client.dart';
 import '../models.dart';
@@ -17,11 +18,15 @@ class TerminalClient extends BaseClient {
       TerminalAction.print
     ];
     if (type == TerminalEvent.invoice &&
-        !supportedInvoiceEventActions.contains(action))
-      throw "$type terminal event only supports $supportedInvoiceEventActions actions";
+        !supportedInvoiceEventActions.contains(action)) {
+      throw ApiException(
+          "$type terminal event only supports $supportedInvoiceEventActions actions");
+    }
     if (type == TerminalEvent.transaction &&
-        !supportedTransactionEventActions.contains(action))
-      throw "$type terminal event only supports $supportedTransactionEventActions actions";
+        !supportedTransactionEventActions.contains(action)) {
+      throw ApiException(
+          "$type terminal event only supports $supportedTransactionEventActions actions");
+    }
     Map<String, dynamic> payloadData = {
       "type": type.name,
       "action": action.name,

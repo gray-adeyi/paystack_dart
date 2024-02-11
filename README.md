@@ -13,6 +13,9 @@ and the Flutter guide for
 
 # Paystack
 
+[![pub package](https://img.shields.io/pub/v/paystack.svg)](https://pub.dev/packages/paystack)
+[![package publisher](https://img.shields.io/pub/publisher/paystack.svg)](https://pub.dev/packages/paystack/publisher)
+
 A backend client library for [Paystack](https://paystack.com/) in dart inspired
 by [Pypaystack2](https://pypi.org/project/pypaystack2/)
 from python's

@@ -3,6 +3,8 @@ import '../enums.dart';
 import '../models.dart';
 
 class BulkChargeClient extends BaseClient {
+  BulkChargeClient({super.secretKey});
+
   Future<Response> initiate(List<Charge> bulkCharge) async {
     var data = {dataAsListKey: bulkCharge.map((bc) => bc.toMap()).toList()};
     return await call(Uri.https(baseUrl, '/bulkcharge'), HttpMethod.post,

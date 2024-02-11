@@ -3,6 +3,8 @@ import 'package:paystack/src/enums.dart';
 import '../base_client.dart';
 
 class IntegrationClient extends BaseClient {
+  IntegrationClient({super.secretKey});
+
   Future<Response> timeout() async {
     return await call(
         Uri.https(baseUrl, '/integration/payment_session_timeout'),

@@ -2,6 +2,8 @@ import '../base_client.dart';
 import '../enums.dart';
 
 class CustomerClient extends BaseClient {
+  CustomerClient({super.secretKey});
+
   Future<Response> create(String email, String firstName, String lastName,
       {String? phone, Map<String, dynamic>? metadata}) async {
     var data = {

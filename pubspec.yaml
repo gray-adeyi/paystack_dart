@@ -1,6 +1,6 @@
 name: paystack
 description: A backend client library for Paystack inspired by Pypaystack2 from Python's ecosystem.
-version: 0.0.1
+version: 0.0.2
 repository: https://github.com/gray-adeyi/paystack_dart
 
 environment:

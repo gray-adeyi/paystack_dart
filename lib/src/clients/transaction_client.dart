@@ -1,7 +1,7 @@
 import '../base_client.dart';
 import '../enums.dart';
 
-/// TransactionClient provides methods that mirror endpoints provided by
+/// It provides methods that mirror endpoints provided by
 /// Paystack's Transactions API which allows you create and manage payments
 /// on your integration.
 class TransactionClient extends BaseClient {

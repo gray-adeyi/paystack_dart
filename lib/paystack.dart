@@ -162,6 +162,15 @@ class PaystackClient extends BaseClient {
   /// See https://paystack.com/docs/api/verification/
   late final VerificationClient verification;
 
+  /// Create an instance of [PaystackClient].
+  ///
+  /// [secretKey] is your Paystack integration key. If omitted,
+  /// [PaystackClient] tries to load it from your environmental
+  /// variables with a key stored in its [secretKeyEnvironmentalVariableName]
+  /// which has a default of "PAYSTACK_SECRET_KEY". i.e. If you provide
+  /// your Paystack integration secret key in your environmental variables
+  /// as `PAYSTACK_SECRET_KEY=<your secret key>`, you don't need to provide
+  /// a [secretKey] on instantiation of [PaystackClient]
   PaystackClient({String? secretKey}) : super(secretKey: secretKey) {
     applePay = ApplePayClient(secretKey: secretKey);
     bulkCharges = BulkChargeClient(secretKey: secretKey);

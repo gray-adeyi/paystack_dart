@@ -1,10 +1,29 @@
-import '../base_client.dart';
-import '../enums.dart';
+import 'package:paystack/paystack.dart';
 
 /// It provides methods that mirror endpoints provided by
 /// Paystack's Transactions API which allows you create and manage payments
 /// on your integration.
 class TransactionClient extends BaseClient {
+  /// Create an instance of [TransactionClient].
+  ///
+  /// [secretKey] is your Paystack integration key. If omitted,
+  /// [TransactionClient] tries to load it from your environmental
+  /// variables with a key stored in its [secretKeyEnvironmentalVariableName]
+  /// which has a default of "PAYSTACK_SECRET_KEY". i.e. If you provide
+  /// your Paystack integration secret key in your environmental variables
+  /// as `PAYSTACK_SECRET_KEY=<your secret key>`, you don't need to provide
+  /// a [secretKey] on instantiation of [TransactionClient].
+  /// There is no need to instantiate this class directly unless you only
+  /// need to use features specific to this client as it is available in
+  /// the all encompassing [PaystackClient] via `transactions` binding
+  /// ## Example
+  /// ```dart
+  /// var client = TransactionClient(secretKey: "<your paystack secret key>");
+  /// var response = await client.all();
+  /// // The Following code is an equivalent of the code above.
+  /// var client = PaystackClient(secretKey: "<your paystack secret key>");
+  /// var response = await client.transactions.all();
+  /// ```
   TransactionClient({super.secretKey});
 
   /// Initialize a transaction from your backend.

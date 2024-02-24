@@ -88,4 +88,4 @@ void main() async {
 Subsequent releases will provide more test coverage and documentation. This project is still
 actively
 in development. If you have any questions, found a bug or have feature suggestions, please create
-an issue in the project's repository. Enjoy you coding! 😎
+an issue in the project's repository. Enjoy your coding experience! 😎

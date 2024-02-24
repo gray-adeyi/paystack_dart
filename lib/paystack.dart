@@ -32,29 +32,134 @@ export 'src/base_client.dart';
 export 'src/enums.dart';
 export 'src/models.dart';
 
+/// It provides class members which are bindings to other clients
+/// which mirrors the same API grouping's on paystack's API reference. see
+/// https://paystack.com/docs/api/ . These clients provide method's over
+/// all the API endpoints provided by paystack and all have the same return
+/// type a Future<Response>
 class PaystackClient extends BaseClient {
+  /// Access an instance of the [ApplePayClient] via this class member to
+  /// access wrapper methods for API endpoints grouped under
+  /// Paystack's Apple Pay API. See https://paystack.com/docs/api/apple-pay/
   late final ApplePayClient applePay;
+
+  /// Access an instance of the [BulkChargeClient] via this class member to
+  /// access wrapper methods for API endpoints grouped under
+  /// Paystack's Bulk Charges API.
+  /// See https://paystack.com/docs/api/bulk-charge/
   late final BulkChargeClient bulkCharges;
+
+  /// Access an instance of the [ChargeClient] via this class member to
+  /// access wrapper methods for API endpoints grouped under
+  /// Paystack's Charge API. See https://paystack.com/docs/api/charge/
   late final ChargeClient charges;
+
+  /// Access an instance of the [CustomerClient] via this class member to
+  /// access wrapper methods for API endpoints grouped under
+  /// Paystack's Customers API. See https://paystack.com/docs/api/customer/
   late final CustomerClient customers;
+
+  /// Access an instance of the [DedicatedVirtualAccountClient] via this
+  /// class member to access wrapper methods for API endpoints grouped under
+  /// Paystack's Dedicated Virtual Account API.
+  /// See https://paystack.com/docs/api/dedicated-virtual-account/
   late final DedicatedVirtualAccountClient dedicatedVirtualAccounts;
+
+  /// Access an instance of the [DisputeClient] via this class member to
+  /// access wrapper methods for API endpoints grouped under
+  /// Paystack's Disputes API. See https://paystack.com/docs/api/dispute/
   late final DisputeClient disputes;
+
+  /// Access an instance of the [IntegrationClient] via this class member to
+  /// access wrapper methods for API endpoints grouped under
+  /// Paystack's Integration API. See https://paystack.com/docs/api/integration/
   late final IntegrationClient integration;
+
+  /// Access an instance of the [MiscellaneousClient] via this class member to
+  /// access wrapper methods for API endpoints grouped under
+  /// Paystack's Miscellaneous API.
+  /// See https://paystack.com/docs/api/miscellaneous/
   late final MiscellaneousClient miscellaneous;
+
+  /// Access an instance of the [PaymentPageClient] via this class member to
+  /// access wrapper methods for API endpoints grouped under
+  /// Paystack's Payment Pages API. See https://paystack.com/docs/api/page/
   late final PaymentPageClient paymentPages;
+
+  /// Access an instance of the [PaymentRequestClient] via this class member to
+  /// access wrapper methods for API endpoints grouped under
+  /// Paystack's Payment Requests API. See https://paystack.com/docs/api/page/
   late final PaymentRequestClient paymentRequests;
+
+  /// Access an instance of the [PlanClient] via this class member to
+  /// access wrapper methods for API endpoints grouped under
+  /// Paystack's Plans API. See https://paystack.com/docs/api/plan/
   late final PlanClient plans;
+
+  /// Access an instance the [ProductClient] via this class member to
+  /// access wrapper methods for API endpoints grouped under
+  /// Paystack's Products API. See https://paystack.com/docs/api/product/
   late final ProductClient products;
+
+  /// Access an instance of the [RefundClient] via this class member to
+  /// access wrapper methods for API endpoints grouped under
+  /// Paystack's Refund API. See https://paystack.com/docs/api/refund/
   late final RefundClient refunds;
+
+  /// Access an instance of the [SettlementClient] via this class member to
+  /// access wrapper methods for API endpoints grouped under
+  /// Paystack's Settlements API. See https://paystack.com/docs/api/settlement/
   late final SettlementClient settlements;
+
+  /// Access an instance of the [SubaccountClient] via this class member to
+  /// access wrapper methods for API endpoints grouped under
+  /// Paystack's Subaccounts API. See https://paystack.com/docs/api/subaccount/
   late final SubaccountClient subaccounts;
+
+  /// Access an instance of the [SubscriptionClient] via this class member to
+  /// access wrapper methods for API endpoints grouped under
+  /// Paystack's Subscriptions API.
+  /// See https://paystack.com/docs/api/subscription/
   late final SubscriptionClient subscriptions;
+
+  /// Access an instance of the [TerminalClient] via the class member to
+  /// access wrapper methods for API endpoints grouped under
+  /// Paystack's Terminal API. See https://paystack.com/docs/api/terminal/
   late final TerminalClient terminals;
+
+  /// Access an instance of the [TransactionClient] via the class member to
+  /// access wrapper methods for API endpoints  grouped under
+  /// Paystack's Transactions API.
+  /// See https://paystack.com/docs/api/transaction/
   late final TransactionClient transactions;
+
+  /// Access an instance of the [TransactionSplitClient] via this class member
+  /// to access wrapper methods for API endpoints grouped under
+  /// Paystack's Transaction Splits API.
+  /// See https://paystack.com/docs/api/split/
   late final TransactionSplitClient transactionSplits;
+
+  /// Access an instance of the [TransferClient] via this class member to
+  /// access wrapper methods for API endpoints grouped under
+  /// Paystack's Transfers API. See https://paystack.com/docs/api/transfer/
   late final TransferClient transfers;
+
+  /// Access an instance of the [TransferControlClient] via this class member to
+  /// access wrapper methods for API endpoints grouped under
+  /// Paystack's Transfers Control API.
+  /// See https://paystack.com/docs/api/transfer-control/
   late final TransferControlClient transferControl;
+
+  /// Access an instance of the [TransferRecipientClient] via this class member
+  /// to access wrapper methods for API endpoints grouped under
+  /// Paystack's Transfer Recipients API.
+  /// See https://paystack.com/docs/api/transfer-recipient/
   late final TransferRecipientClient transferRecipient;
+
+  /// Access an instance of the [VerificationClient] via this class member
+  /// to access wrapper methods for API endpoints grouped under
+  /// Paystack's Verification API.
+  /// See https://paystack.com/docs/api/verification/
   late final VerificationClient verification;
 
   PaystackClient({String? secretKey}) : super(secretKey: secretKey) {

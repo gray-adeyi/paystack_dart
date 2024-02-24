@@ -1,9 +1,15 @@
 import '../base_client.dart';
 import '../enums.dart';
 
+/// It provides methods that mirror endpoints provided by
+/// Paystack's Dedicated Virtual Account API which enables Nigerian
+/// merchants to manage unique payment accounts of their customers.
 class DedicatedVirtualAccountClient extends BaseClient {
   DedicatedVirtualAccountClient({super.secretKey});
 
+  /// Create a dedicated virtual account for an existing customer.
+  ///
+  /// Note only Wema Bank and Titan Paystack is currently supported.
   Future<Response> create(
     String customer, {
     String? preferredBank,
@@ -26,6 +32,8 @@ class DedicatedVirtualAccountClient extends BaseClient {
         data: data);
   }
 
+  /// Create a customer, validate the customer, and assign
+  /// a DVA to the customer.
   Future<Response> assign(
     String email,
     String firstName,
@@ -57,6 +65,7 @@ class DedicatedVirtualAccountClient extends BaseClient {
         data: data);
   }
 
+  /// Retrieve all the dedicated virtual accounts available on your integration.
   Future<Response> all(bool active,
       {Currency currency = Currency.ngn,
       String? providerSlug,
@@ -73,12 +82,15 @@ class DedicatedVirtualAccountClient extends BaseClient {
         HttpMethod.get);
   }
 
+  /// Retrieve a single dedicated virtual account available on your
+  /// integration by it's id.
   Future<Response> fetchOne(String dedicatedAccountId) async {
     return await call(
         Uri.https(baseUrl, '/dedicated_account/$dedicatedAccountId'),
         HttpMethod.get);
   }
 
+  /// Requery a dedicated virtual account for new transactions.
   Future<Response> requery(String accountNumber, String providerSlug,
       {String? date}) async {
     var queryParameters = normalizeQueryParameters({
@@ -90,12 +102,14 @@ class DedicatedVirtualAccountClient extends BaseClient {
         HttpMethod.get);
   }
 
+  /// Deactivate a dedicated virtual account on your integration.
   Future<Response> deactivate(String dedicatedAccountId) async {
     return await call(
         Uri.https(baseUrl, '/dedicated_account/$dedicatedAccountId'),
         HttpMethod.delete);
   }
 
+  /// Split a dedicated virtual account transaction with one or more accounts
   Future<Response> splitTransaction(
     String customer, {
     String? subaccount,
@@ -113,12 +127,15 @@ class DedicatedVirtualAccountClient extends BaseClient {
         data: data);
   }
 
+  /// If you've previously set up split payment for transactions on
+  /// a dedicated virtual account, you can remove it with this method.
   Future<Response> removeSplit(String accountNumber) async {
     return await call(
         Uri.https(baseUrl, '/dedicated_account/split'), HttpMethod.delete,
         data: {'account_number': accountNumber});
   }
 
+  /// Retrieve bank providers for a dedicated virtual account.
   Future<Response> bankProviders() async {
     return await call(
         Uri.https(baseUrl, '/dedicated_account/available_providers'),

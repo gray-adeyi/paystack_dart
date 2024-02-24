@@ -15,7 +15,7 @@ const String packageVersion = "0.0.1";
 
 class BaseClient {
   late String _secretKey;
-  String secretKeyEnvironmentalVariableName = "PAYSTACK_SECRET_KEY";
+  static String secretKeyEnvironmentalVariableName = "PAYSTACK_SECRET_KEY";
   http.Client client = http.Client();
   final String dataAsListKey = 'value';
 

@@ -16,7 +16,7 @@ class MiscellaneousClient extends BaseClient {
   /// a [secretKey] on instantiation of [MiscellaneousClient].
   /// There is no need to instantiate this class directly unless you only
   /// need to use features specific to this client as it is available in
-  /// the all encompassing [PaystackClient] via `bulkCharges` binding
+  /// the all encompassing [PaystackClient] via `miscellaneous` binding
   /// ## Example
   /// ```dart
   /// var client = MiscellaneousClient(secretKey: "<your paystack secret key>");

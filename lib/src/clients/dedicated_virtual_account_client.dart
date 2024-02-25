@@ -5,6 +5,28 @@ import '../enums.dart';
 /// Paystack's Dedicated Virtual Account API which enables Nigerian
 /// merchants to manage unique payment accounts of their customers.
 class DedicatedVirtualAccountClient extends BaseClient {
+  /// Create an instance of [DedicatedVirtualAccountClient].
+  ///
+  /// [secretKey] is your Paystack integration key. If omitted,
+  /// [DedicatedVirtualAccountClient] tries to load it from your environmental
+  /// variables with a key stored in its [secretKeyEnvironmentalVariableName]
+  /// which has a default of "PAYSTACK_SECRET_KEY". i.e. If you provide
+  /// your Paystack integration secret key in your environmental variables
+  /// as `PAYSTACK_SECRET_KEY=<your secret key>`, you don't need to provide
+  /// a [secretKey] on instantiation of [DedicatedVirtualAccountClient].
+  /// There is no need to instantiate this class directly unless you only
+  /// need to use features specific to this client as it is available in
+  /// the all encompassing [PaystackClient] via `dedicatedVirtualAccounts`
+  /// binding
+  /// ## Example
+  /// ```dart
+  /// var client = DedicatedVirtualAccountClient(
+  /// secretKey: "<your paystack secret key>");
+  /// var response = await client.all(true);
+  /// // The Following code is an equivalent of the code above.
+  /// var client = PaystackClient(secretKey: "<your paystack secret key>");
+  /// var response = await client.dedicatedVirtualAccounts.all(true);
+  /// ```
   DedicatedVirtualAccountClient({super.secretKey});
 
   /// Create a dedicated virtual account for an existing customer.

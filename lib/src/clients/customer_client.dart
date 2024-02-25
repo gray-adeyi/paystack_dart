@@ -8,7 +8,7 @@ class CustomerClient extends BaseClient {
   /// Create an instance of [CustomerClient].
   ///
   /// [secretKey] is your Paystack integration key. If omitted,
-  /// [BulkChargeClient] tries to load it from your environmental
+  /// [CustomerClient] tries to load it from your environmental
   /// variables with a key stored in its [secretKeyEnvironmentalVariableName]
   /// which has a default of "PAYSTACK_SECRET_KEY". i.e. If you provide
   /// your Paystack integration secret key in your environmental variables

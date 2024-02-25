@@ -16,7 +16,7 @@ class IntegrationClient extends BaseClient {
   /// a [secretKey] on instantiation of [IntegrationClient].
   /// There is no need to instantiate this class directly unless you only
   /// need to use features specific to this client as it is available in
-  /// the all encompassing [PaystackClient] via `customers` binding
+  /// the all encompassing [PaystackClient] via `integration` binding
   /// ## Example
   /// ```dart
   /// var client = IntegrationClient(secretKey: "<your paystack secret key>");

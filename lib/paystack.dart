@@ -53,6 +53,7 @@ export 'src/clients/transfer_control_client.dart';
 export 'src/clients/transfer_recipient_client.dart';
 export 'src/clients/verification_client.dart';
 export 'src/enums.dart';
+export 'src/exceptions.dart';
 export 'src/models.dart';
 
 /// It provides class members which are bindings to other clients

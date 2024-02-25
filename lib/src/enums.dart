@@ -1,3 +1,4 @@
+/// An enum of intervals supported by Paystack
 enum Interval {
   hourly,
   daily,
@@ -8,14 +9,17 @@ enum Interval {
   annually
 }
 
+/// An enum of settlement schedules supported by Paystack
 enum SettlementSchedule { auto, weekly, monthly, manual }
 
+/// An enum of financial channels supported by Paystack
 enum FinancialChannel {
   nuban,
   ghipss,
   mobileMoney,
   basa;
 
+  /// Convert the [FinancialChannel] to a value recognized by Paystack
   String get paystackValue {
     switch (this) {
       case FinancialChannel.nuban:
@@ -30,11 +34,13 @@ enum FinancialChannel {
   }
 }
 
+/// An enum of risk actions supported by Paystack
 enum RiskAction {
   default_,
   allow,
   deny;
 
+  /// Convert the [RiskAction] to a value recognized by Paystack
   String get paystackValue {
     switch (this) {
       case RiskAction.default_:
@@ -45,6 +51,7 @@ enum RiskAction {
   }
 }
 
+/// An enum of countries currently supported by Paystack
 enum Country {
   nigeria,
   ghana,
@@ -53,6 +60,7 @@ enum Country {
   coteDIvoire,
   egypt;
 
+  /// Get the country ISO code
   String get code {
     switch (this) {
       case Country.nigeria:
@@ -88,12 +96,16 @@ enum Country {
   }
 }
 
+/// An enum of split modes supported by Paystack
 enum SplitMode { percentage, flat }
 
+/// An enum of terminal events supported by Paystack
 enum TerminalEvent { invoice, transaction }
 
+/// An enum of terminal actions supported by Paystack
 enum TerminalAction { process, view, print }
 
+/// An enum of currencies supported by paystack
 enum Currency {
   ngn,
   ghs,
@@ -103,26 +115,37 @@ enum Currency {
   xof,
   egp;
 
+  /// Serialize [Currency] to a value understandable by Paystack's API
   String get paystackValue => name.toUpperCase();
 }
 
+/// An enum of payment channels supported by Paystack
 enum PaymentChannel { card, bank, ussd, qr, mobileMoney, bankTransfer, eft }
 
+/// An enum of charge bearers supported by Paystack
 enum ChargeBearer { account, subaccount }
 
 // TODO: see if the bearers can be merged together.
+/// An enum of subaccount charge bearers supported by Paystack
 enum SubaccountChargeBearer { account, allProportional, all }
 
+/// An enum of bulk charge status supported by Paystack
+enum BulkChargeStatus { pending, success, failed }
+
+/// An enum of transaction status supported by Paystack
 enum TransactionStatus { failed, success, abandoned }
 
+/// An enum of settlement status supported by Paystack
 enum SettlementStatus { success, processing, pending, failed }
 
+/// An enum of settlement status supported by Paystack
 enum DisputeStatus {
   awaitingMerchantFeedback,
   awaitingBankFeedback,
   pending,
   resolved;
 
+  /// Serialize the [DisputeStatus] to a value processable by Paystack
   String get paystackValue {
     switch (this) {
       case DisputeStatus.awaitingMerchantFeedback:
@@ -137,10 +160,12 @@ enum DisputeStatus {
   }
 }
 
+/// An enum of dispute resolutions supported by paystack
 enum DisputeResolution {
   merchantAccepted,
   declined;
 
+  /// Serialize the [DisputeResolution] to a value processable by Paystack
   String get paystackValue {
     switch (this) {
       case DisputeResolution.merchantAccepted:
@@ -151,12 +176,16 @@ enum DisputeResolution {
   }
 }
 
+/// An enum of account types supported by Paystack
 enum AccountType { personal, business }
 
+/// An enum of document types supported by Paystack
 enum DocumentType { identityNumber, passportNumber, businessRegistrationNumber }
 
+/// An enum of gateways supported by Paystack
 enum Gateway { emandate, digitalbankmandate }
 
+/// An enum of http methods
 enum HttpMethod {
   get,
   post,
@@ -166,6 +195,7 @@ enum HttpMethod {
   head,
 }
 
+/// An enum of https statuses
 enum HttpStatus {
   // 100-199 codes
   continue_,
@@ -242,6 +272,7 @@ enum HttpStatus {
 
   bool get isServerError => (499 < code) && (code <= 599);
 
+  /// Retrieve the http status code.
   int get code {
     switch (this) {
       case HttpStatus.continue_:

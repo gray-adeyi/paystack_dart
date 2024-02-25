@@ -9,11 +9,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 Nothing is planned yet.
 
-## [0.0.2] - 2024-02-11
+## [0.0.2] - 2024-02-25
 
 ### Added
 
 - Image shield icons to readme.
+- API Documentation.
+- `BulkChargeStatus` an enum for the different states a bulk charge can be.
+- Expose API for other clients e.g. `ApplePayClient`, `BulkChargeClient` e.t.c
+- Expose exceptions
+
+### Fixed
+
+- Missing query parameters for `BulkChargeClient.charges`
+
+### Changed
+
+- Rename `TransactionSplitClient.createSplit` to `TransactionSplitClient.create`
 
 ## [0.0.1] - 2024-02-11
 

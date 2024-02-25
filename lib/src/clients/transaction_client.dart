@@ -146,10 +146,15 @@ class TransactionClient extends BaseClient {
         Uri.https(baseUrl, "/transaction", queryParameters), HttpMethod.get);
   }
 
+  /// Retrieve a single transaction by its id
   Future<Response> fetchOne(String id) async {
     return await call(Uri.https(baseUrl, '/transaction/$id'), HttpMethod.get);
   }
 
+  /// Charge an authorization.
+  ///
+  /// All authorizations marked as reusable can be charged with this
+  /// method whenever you need to receive payments
   Future<Response> charge(int amount, String email, String authorizationCode,
       {String? reference,
       Currency? currency,
@@ -163,12 +168,14 @@ class TransactionClient extends BaseClient {
         HttpMethod.post);
   }
 
+  /// Retrieve the timeline for a transaction
   Future<Response> timeline(String idOrReference) async {
     return await call(
         Uri.https(baseUrl, "/transaction/timeline/$idOrReference"),
         HttpMethod.get);
   }
 
+  /// Retrieve the total amount received on your account
   Future<Response> totals({
     int perPage = 50,
     int page = 1,
@@ -179,6 +186,7 @@ class TransactionClient extends BaseClient {
         Uri.https(baseUrl, "/transaction/totals"), HttpMethod.get);
   }
 
+  /// Export a list of transactions carried out on your integration
   Future<Response> export(
       {int perPage = 50,
       int page = 1,
@@ -195,6 +203,7 @@ class TransactionClient extends BaseClient {
         Uri.https(baseUrl, "/transaction/export"), HttpMethod.get);
   }
 
+  /// Retrieve part of a payment from a customer
   Future<Response> partialDebit(
       String authorizationCode, Currency currency, int amount, String email,
       {String? reference, int? atLeast}) async {

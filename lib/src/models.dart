@@ -1,5 +1,6 @@
 import './enums.dart';
 
+/// A model class to for terminal data
 class TerminalData {
   final String id;
   final String reference;
@@ -14,6 +15,7 @@ class TerminalData {
   }
 }
 
+/// A model class for subaccounts
 class Subaccount {
   final String id;
   final double share;
@@ -31,6 +33,7 @@ class Subaccount {
 // a list of Map<String, String>
 }
 
+/// A model class for list item
 class LineItem {
   final String name;
   final int amount;
@@ -43,6 +46,7 @@ class LineItem {
   }
 }
 
+/// A model class for tax
 class Tax {
   final String name;
   final int amount;
@@ -54,6 +58,7 @@ class Tax {
   }
 }
 
+/// A model class for transfer recipient
 class TransferRecipient {
   final FinancialChannel type;
   final String name;
@@ -100,6 +105,7 @@ class TransferRecipient {
   }
 }
 
+/// A model class for transfer
 class Transfer {
   final int amount;
   final String recipient;
@@ -118,6 +124,7 @@ class Transfer {
   }
 }
 
+/// A model class for charge
 class Charge {
   final String authorization;
   final int amount;
